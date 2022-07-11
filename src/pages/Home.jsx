@@ -13,8 +13,8 @@ export const Home = () => {
   const userData = useSelector((state) => state.auth.data);
   const { posts, tags } = useSelector((state) => state.posts);
 
-  const isPostsLoading = posts.status == 'loading';
-  const isTagsLoading = tags.status == 'loading';
+  const isPostsLoading = posts.status === 'loading';
+  const isTagsLoading = tags.status === 'loading';
   React.useEffect(() => {
     dispatch(fetchPosts());
     dispatch(fetchTags());
@@ -35,7 +35,7 @@ export const Home = () => {
               <Post
                 id={obj._id}
                 title={obj.title}
-                imageUrl={obj.imageUrl}
+                imageUrl={obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ''}
                 user={{
                   avatarUrl: obj.avatarUrl,
                   fullName: obj.fullName,
