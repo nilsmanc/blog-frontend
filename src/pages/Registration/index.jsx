@@ -32,7 +32,7 @@ export const Registration = () => {
     const data = await dispatch(fetchRegister(values));
 
     if (!data.payload) {
-      return alert('Не удалось авторизоваться');
+      return alert('Не удалось зарегистрироваться');
     }
     if ('token' in data.payload) {
       window.localStorage.setItem('token', data.payload.token);
