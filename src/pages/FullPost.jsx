@@ -1,31 +1,32 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import axios from '../axios';
-import { Post } from '../components/Post';
-import { Index } from '../components/AddComment';
-import { CommentsBlock } from '../components/CommentsBlock';
-import ReactMarkdown from 'react-markdown';
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
+
+import axios from '../axios'
+import { Post } from '../components/Post'
+import { Index } from '../components/AddComment'
+import { CommentsBlock } from '../components/CommentsBlock'
 
 export const FullPost = () => {
-  const [data, setData] = React.useState();
-  const [isLoading, setLoading] = React.useState(true);
-  const { id } = useParams();
+  const [data, setData] = React.useState()
+  const [isLoading, setLoading] = React.useState(true)
+  const { id } = useParams()
 
   React.useEffect(() => {
     axios
       .get(`/posts/${id}`)
       .then((res) => {
-        setData(res.data);
-        setLoading(false);
+        setData(res.data)
+        setLoading(false)
       })
       .catch((err) => {
-        console.warn(err);
-        alert('Ошибка при получении статьи');
-      });
-  }, []);
+        console.warn(err)
+        alert('Ошибка при получении статьи')
+      })
+  }, [])
 
   if (isLoading) {
-    return <Post isLoading={isLoading} isFullPost />;
+    return <Post isLoading={isLoading} isFullPost />
   }
 
   return (
@@ -66,5 +67,5 @@ export const FullPost = () => {
         <Index />
       </CommentsBlock>
     </>
-  );
-};
+  )
+}

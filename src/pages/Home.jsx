@@ -1,30 +1,32 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Grid from '@mui/material/Grid';
-import { Post } from '../components/Post';
-import { TagsBlock } from '../components/TagsBlock';
-import { CommentsBlock } from '../components/CommentsBlock';
-import { fetchPosts, fetchTags } from '../redux/slices/posts';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { Post } from '../components/Post'
+import { TagsBlock } from '../components/TagsBlock'
+import { CommentsBlock } from '../components/CommentsBlock'
+import { fetchPosts, fetchTags } from '../redux/slices/posts'
+
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Grid from '@mui/material/Grid'
 
 export const Home = () => {
-  const dispatch = useDispatch();
-  const userData = useSelector((state) => state.auth.data);
-  const { posts, tags } = useSelector((state) => state.posts);
+  const dispatch = useDispatch()
+  const userData = useSelector((state) => state.auth.data)
+  const { posts, tags } = useSelector((state) => state.posts)
 
-  const isPostsLoading = posts.status === 'loading';
-  const isTagsLoading = tags.status === 'loading';
+  const isPostsLoading = posts.status === 'loading'
+  const isTagsLoading = tags.status === 'loading'
   React.useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchTags());
-  }, []);
+    dispatch(fetchPosts())
+    dispatch(fetchTags())
+  }, [])
 
   return (
     <>
-      <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
-        <Tab label="Новые" />
-        <Tab label="Популярные" />
+      <Tabs style={{ marginBottom: 15 }} value={0} aria-label='basic tabs example'>
+        <Tab label='Новые' />
+        <Tab label='Популярные' />
       </Tabs>
       <Grid container spacing={4}>
         <Grid xs={8} item>
@@ -73,5 +75,5 @@ export const Home = () => {
         </Grid>
       </Grid>
     </>
-  );
-};
+  )
+}

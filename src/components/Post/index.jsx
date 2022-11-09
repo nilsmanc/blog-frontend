@@ -1,17 +1,18 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import clsx from 'clsx';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Clear';
-import EditIcon from '@mui/icons-material/Edit';
-import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import styles from './Post.module.scss';
-import { UserInfo } from '../UserInfo';
-import { PostSkeleton } from './Skeleton';
-import { fetchRemovePost } from '../../redux/slices/posts';
+import { UserInfo } from '../UserInfo'
+import { PostSkeleton } from './Skeleton'
+import { fetchRemovePost } from '../../redux/slices/posts'
+
+import styles from './Post.module.scss'
+import clsx from 'clsx'
+import IconButton from '@mui/material/IconButton'
+import DeleteIcon from '@mui/icons-material/Clear'
+import EditIcon from '@mui/icons-material/Edit'
+import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined'
+import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined'
 
 export const Post = ({
   id,
@@ -27,27 +28,28 @@ export const Post = ({
   isLoading,
   isEditable,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+
   if (isLoading) {
-    return <PostSkeleton />;
+    return <PostSkeleton />
   }
 
   const onClickRemove = () => {
     if (window.confirm('Вы действительно хотите удалить статью?')) {
-      dispatch(fetchRemovePost(id));
+      dispatch(fetchRemovePost(id))
     }
-  };
+  }
 
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
       {isEditable && (
         <div className={styles.editButtons}>
           <Link to={`/posts/${id}/edit`}>
-            <IconButton color="primary">
+            <IconButton color='primary'>
               <EditIcon />
             </IconButton>
           </Link>
-          <IconButton onClick={onClickRemove} color="secondary">
+          <IconButton onClick={onClickRemove} color='secondary'>
             <DeleteIcon />
           </IconButton>
         </div>
@@ -86,5 +88,5 @@ export const Post = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
