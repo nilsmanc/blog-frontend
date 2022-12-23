@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate, Navigate, useParams } from 'react-router-dom'
 
 import { selectIsAuth } from '../../redux/slices/auth'
-import axios from '../../axios'
+import instance from '../../axios'
 
 import styles from './AddPost.module.scss'
 import 'easymde/dist/easymde.min.css'
@@ -29,7 +29,7 @@ export const AddPost = () => {
       const formData = new FormData()
       const file = event.target.files[0]
       formData.append('image', file)
-      const { data } = await axios.post('/upload', formData)
+      const { data } = await instance.post('/upload', formData)
       setImageUrl(data.url)
     } catch (err) {
       console.warn(err)
@@ -39,7 +39,7 @@ export const AddPost = () => {
 
   React.useEffect(() => {
     if (id) {
-      axios
+      instance
         .get(`/posts/${id}`)
         .then(({ data }) => {
           setTitle(data.title)
@@ -72,8 +72,8 @@ export const AddPost = () => {
       }
 
       const { data } = isEditing
-        ? await axios.patch(`/posts/${id}`, fields)
-        : await axios.post('/posts', fields)
+        ? await instance.patch(`/posts/${id}`, fields)
+        : await instance.post('/posts', fields)
 
       const _id = isEditing ? id : data._id
 

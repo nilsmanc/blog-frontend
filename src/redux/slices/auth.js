@@ -1,19 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import axios from '../../axios'
+import instance from '../../axios'
 
 export const fetchAuth = createAsyncThunk('auth/fetchAuth', async (params) => {
-  const { data } = await axios.post('/auth/login', params)
+  const { data } = await instance.post('/auth/login', params)
   return data
 })
 
 export const fetchRegister = createAsyncThunk('auth/fetchRegister', async (params) => {
-  const { data } = await axios.post('/auth/register', params)
+  const { data } = await instance.post('/auth/register', params)
   return data
 })
 
 export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
-  const { data } = await axios.get('/auth/me')
+  const { data } = await instance.get('/auth/me')
   return data
 })
 

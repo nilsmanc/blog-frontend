@@ -2,10 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 
-import axios from '../axios'
 import { Post } from '../components/Post'
 import { Index } from '../components/AddComment'
 import { CommentsBlock } from '../components/CommentsBlock'
+import instance from '../axios'
 
 export const FullPost = () => {
   const [data, setData] = React.useState()
@@ -13,7 +13,7 @@ export const FullPost = () => {
   const { id } = useParams()
 
   React.useEffect(() => {
-    axios
+    instance
       .get(`/posts/${id}`)
       .then((res) => {
         setData(res.data)
