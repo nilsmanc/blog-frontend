@@ -1,3 +1,15 @@
-Test account: test@test.com / 12345
+### Test account
 
-Technologies: React, Redux Toolkit, React Hook Form, React-Router v6, React Markdown/Simple Editor, axios
+test@test.com / 12345
+
+### Technologies
+
+React, Redux Toolkit, React Hook Form, React-Router v6, React Markdown/Simple Editor, axios
+
+![first](/public/readme/sign-up.png)
+
+![second](/public/readme/main.png)
+
+![third](/public/readme/post.png)
+
+![fourth](/public/readme/add-post.png)
