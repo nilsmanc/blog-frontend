@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 
-export const Login = () => {
+export const Login: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch()
   const {

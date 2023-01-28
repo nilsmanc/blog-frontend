@@ -12,7 +12,7 @@ import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
 
-export const Registration = () => {
+export const Registration: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch()
   const {

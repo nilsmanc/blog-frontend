@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 
-export const AddPost = () => {
+export const AddPost: React.FC = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const isAuth = useSelector(selectIsAuth)

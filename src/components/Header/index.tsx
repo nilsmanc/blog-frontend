@@ -8,7 +8,7 @@ import styles from './Header.module.scss'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(selectIsAuth)
 

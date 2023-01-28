@@ -7,7 +7,7 @@ import { Index } from '../components/AddComment'
 import { CommentsBlock } from '../components/CommentsBlock'
 import instance from '../axios'
 
-export const FullPost = () => {
+export const FullPost: React.FC = () => {
   const [data, setData] = React.useState()
   const [isLoading, setLoading] = React.useState(true)
   const { id } = useParams()

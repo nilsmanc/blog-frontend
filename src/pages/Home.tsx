@@ -10,7 +10,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Grid from '@mui/material/Grid'
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const dispatch = useDispatch()
   const userData = useSelector((state) => state.auth.data)
   const { posts, tags } = useSelector((state) => state.posts)
