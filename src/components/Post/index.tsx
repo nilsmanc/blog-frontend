@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { UserInfo } from '../UserInfo'
@@ -13,8 +12,25 @@ import DeleteIcon from '@mui/icons-material/Clear'
 import EditIcon from '@mui/icons-material/Edit'
 import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined'
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined'
+import { useAppDispatch } from '../../redux/store'
+import { User } from '../../types'
 
-export const Post = ({
+type PostProps = {
+  id?: string
+  title?: string
+  createdAt?: string
+  imageUrl?: string
+  user?: User
+  viewsCount?: number
+  commentsCount?: number
+  tags?: Array<string>
+  children?: React.ReactNode
+  isFullPost: boolean
+  isLoading?: boolean
+  isEditable?: boolean
+}
+
+export const Post: React.FC<PostProps> = ({
   id,
   title,
   createdAt,
@@ -28,7 +44,7 @@ export const Post = ({
   isLoading,
   isEditable,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   if (isLoading) {
     return <PostSkeleton />

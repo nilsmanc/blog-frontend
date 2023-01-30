@@ -28,13 +28,14 @@ export interface LoginData {
 }
 
 export type User = {
-  _id: string
+  _id?: string
   fullName: string
-  email: string
-  passwordHash: string
-  createdAt: Date
-  updatedAt: Date
-  __v: number
+  email?: string
+  avatarUrl?: string
+  passwordHash?: string
+  createdAt?: Date
+  updatedAt?: Date
+  __v?: number
 }
 
 export interface AuthSliceState {
@@ -73,4 +74,12 @@ export interface PostsSliceState {
     items: Array<string>
     status: 'loading' | 'loaded' | 'error'
   }
+}
+
+export type Comment = {
+  user: {
+    fullName: string
+    avatarUrl: string
+  }
+  text: string
 }

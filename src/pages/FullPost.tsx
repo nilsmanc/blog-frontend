@@ -7,8 +7,21 @@ import { Index } from '../components/AddComment'
 import { CommentsBlock } from '../components/CommentsBlock'
 import instance from '../axios'
 
+type PostData = {
+  _id: string
+  title: string
+  text: string
+  imageUrl: string
+  avatarUrl: string
+  fullName: string
+  createdAt: string
+  viewsCount: number
+  commentsCount: number
+  tags: Array<string>
+  isFullPost: boolean
+}
 export const FullPost: React.FC = () => {
-  const [data, setData] = React.useState()
+  const [data, setData] = React.useState({} as PostData)
   const [isLoading, setLoading] = React.useState(true)
   const { id } = useParams()
 

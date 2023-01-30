@@ -24,10 +24,10 @@ export const AddPost: React.FC = () => {
 
   const isEditing = Boolean(id)
 
-  const handleChangeFile = async (event) => {
+  const handleChangeFile = async (event: Event) => {
     try {
       const formData = new FormData()
-      const file = event.target.files[0]
+      const file = (event.target as HTMLInputElement).files[0]
       formData.append('image', file)
       const { data } = await instance.post('/upload', formData)
       setImageUrl(data.url)
@@ -108,7 +108,7 @@ export const AddPost: React.FC = () => {
       <Button onClick={() => inputFileRef.current.click()} variant='outlined' size='large'>
         Загрузить превью
       </Button>
-      <input ref={inputFileRef} type='file' onChange={handleChangeFile} hidden />
+      <input ref={inputFileRef} type='file' onChange={() => handleChangeFile} hidden />
       {imageUrl && (
         <>
           <Button variant='contained' color='error' onClick={onClickRemoveImage}>

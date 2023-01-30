@@ -13,7 +13,7 @@ export const fetchTags = createAsyncThunk<Array<string>>('posts/fetchTags', asyn
   return data
 })
 
-export const fetchRemovePost = createAsyncThunk<void, number>('posts/fetchRemovePost', async (id) =>
+export const fetchRemovePost = createAsyncThunk<void, string>('posts/fetchRemovePost', async (id) =>
   instance.delete(`/posts/${id}`),
 )
 

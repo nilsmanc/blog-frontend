@@ -9,8 +9,19 @@ import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import Skeleton from '@mui/material/Skeleton'
+import { Comment } from '../types'
 
-export const CommentsBlock = ({ items, children, isLoading = true }) => {
+type CommentsBlockProps = {
+  items: Comment[]
+  children: React.ReactNode
+  isLoading: boolean
+}
+
+export const CommentsBlock: React.FC<CommentsBlockProps> = ({
+  items,
+  children,
+  isLoading = true,
+}) => {
   return (
     <SideBlock title='Комментарии'>
       <List>
