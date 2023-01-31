@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
@@ -10,10 +10,11 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
+import { useAppDispatch } from '../../redux/store'
 
 export const Login: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,

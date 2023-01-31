@@ -31,7 +31,7 @@ const initialState: PostsSliceState = {
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducer: {},
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
       state.posts.items = []

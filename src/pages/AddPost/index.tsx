@@ -94,7 +94,7 @@ export const AddPost: React.FC = () => {
       autosave: {
         enabled: true,
         delay: 1000,
-      },
+      } as SimpleMDE.AutoSaveOptions,
     }),
     [],
   )

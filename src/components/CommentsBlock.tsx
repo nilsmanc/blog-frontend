@@ -13,7 +13,7 @@ import { Comment } from '../types'
 
 type CommentsBlockProps = {
   items: Comment[]
-  children: React.ReactNode
+  children?: React.ReactNode
   isLoading: boolean
 }
 

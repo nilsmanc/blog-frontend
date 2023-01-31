@@ -25,7 +25,7 @@ type PostProps = {
   commentsCount?: number
   tags?: Array<string>
   children?: React.ReactNode
-  isFullPost: boolean
+  isFullPost?: boolean
   isLoading?: boolean
   isEditable?: boolean
 }
