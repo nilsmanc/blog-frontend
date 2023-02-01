@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
 import { useAppDispatch } from '../../redux/store'
+import { RegisterParams } from '../../types'
 
 export const Registration: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -29,7 +30,7 @@ export const Registration: React.FC = () => {
     mode: 'onChange',
   })
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: RegisterParams) => {
     const data = await dispatch(fetchRegister(values))
 
     if (!data.payload) {

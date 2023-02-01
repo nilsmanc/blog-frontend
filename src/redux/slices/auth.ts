@@ -1,19 +1,16 @@
-import { AuthSliceState, RegisterParams, User } from './../../types'
+import { AuthData, AuthSliceState, RegisterParams, User } from './../../types'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import instance from '../../axios'
 import { LoginData, LoginParams } from '../../types'
 import { RootState } from '../store'
 
-export const fetchAuth = createAsyncThunk<LoginData, LoginParams>(
-  'auth/fetchAuth',
-  async (params) => {
-    const { data } = await instance.post('/auth/login', params)
-    return data
-  },
-)
+export const fetchAuth = createAsyncThunk<any, LoginParams>('auth/fetchAuth', async (params) => {
+  const { data } = await instance.post('/auth/login', params)
+  return data
+})
 
-export const fetchRegister = createAsyncThunk<LoginData, RegisterParams>(
+export const fetchRegister = createAsyncThunk<any, RegisterParams>(
   'auth/fetchRegister',
   async (params) => {
     const { data } = await instance.post('/auth/register', params)
@@ -21,7 +18,7 @@ export const fetchRegister = createAsyncThunk<LoginData, RegisterParams>(
   },
 )
 
-export const fetchAuthMe = createAsyncThunk<User>('auth/fetchAuthMe', async () => {
+export const fetchAuthMe = createAsyncThunk<AuthData>('auth/fetchAuthMe', async () => {
   const { data } = await instance.get('/auth/me')
   return data
 })

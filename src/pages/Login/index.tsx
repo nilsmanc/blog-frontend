@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import { useAppDispatch } from '../../redux/store'
+import { LoginParams } from '../../types'
 
 export const Login: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -27,7 +28,7 @@ export const Login: React.FC = () => {
     mode: 'onChange',
   })
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: LoginParams) => {
     const data = await dispatch(fetchAuth(values))
 
     if (!data.payload) {
