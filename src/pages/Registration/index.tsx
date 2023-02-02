@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form'
 import { Navigate } from 'react-router-dom'
 
 import { fetchRegister, selectIsAuth } from '../../redux/slices/auth'
+import { useAppDispatch } from '../../redux/store'
+import { PayloadData, RegisterParams } from '../../types'
 
 import styles from './Login.module.scss'
 import Typography from '@mui/material/Typography'
@@ -11,8 +13,6 @@ import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
-import { useAppDispatch } from '../../redux/store'
-import { RegisterParams } from '../../types'
 
 export const Registration: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -31,13 +31,13 @@ export const Registration: React.FC = () => {
   })
 
   const onSubmit = async (values: RegisterParams) => {
-    const data = await dispatch(fetchRegister(values))
+    const data = (await dispatch(fetchRegister(values))) as PayloadData
 
     if (!data.payload) {
       return alert('Не удалось зарегистрироваться')
     }
     if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token)
+      window.localStorage.setItem('token', data.payload.token as string)
     }
   }
 

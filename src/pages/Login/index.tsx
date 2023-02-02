@@ -4,14 +4,14 @@ import { Navigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import { fetchAuth, selectIsAuth } from '../../redux/slices/auth'
+import { useAppDispatch } from '../../redux/store'
+import { LoginParams, PayloadData } from '../../types'
 
 import styles from './Login.module.scss'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
-import { useAppDispatch } from '../../redux/store'
-import { LoginParams } from '../../types'
 
 export const Login: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -29,13 +29,14 @@ export const Login: React.FC = () => {
   })
 
   const onSubmit = async (values: LoginParams) => {
-    const data = await dispatch(fetchAuth(values))
+    const data = (await dispatch(fetchAuth(values))) as PayloadData
+    console.log(data)
 
     if (!data.payload) {
       return alert('Не удалось авторизоваться')
     }
     if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token)
+      window.localStorage.setItem('token', data.payload.token as string)
     }
   }
 

@@ -9,24 +9,6 @@ export type RegisterParams = {
   password: string
 }
 
-export interface LoginData {
-  meta: {
-    arg: LoginParams | RegisterParams
-    requestId: string
-    requestStatus: string
-  }
-  payload: {
-    email: string
-    fullName: string
-    token: string
-    createdAt: Date
-    updatedAt: Date
-    __v: number
-    _id: string
-  }
-  type: string
-}
-
 export type User = {
   _id?: string
   fullName: string
@@ -36,6 +18,22 @@ export type User = {
   createdAt?: Date
   updatedAt?: Date
   __v?: number
+}
+
+export type UserData = {
+  _id: string
+  fullName: string
+  email: string
+  avatarUrl: string
+  token?: string
+  passwordHash: string
+  createdAt: string
+  updatedAt: string
+  __v: number
+}
+
+export type PayloadData = {
+  payload: UserData
 }
 
 export interface AuthSliceState {
