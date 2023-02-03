@@ -4,7 +4,7 @@ test@test.com / 12345
 
 ### Technologies
 
-React, Redux Toolkit, React Hook Form, React-Router v6, React Markdown/Simple Editor, axios
+React, Typescript, Redux Toolkit, React Hook Form, React-Router v6, React Markdown/Simple Editor, axios
 
 ![first](/public/readme/sign-up.png)
 
